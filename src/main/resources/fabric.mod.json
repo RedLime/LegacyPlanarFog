@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "z-buffer-fog",
+  "version": "${version}",
+  "name": "ZBufferFog",
+  "authors": [
+    "RedLime"
+  ],
+  "environment": "client",
+  "custom": {
+    "mm:early_risers": [
+      "com.redlimerl.zbufferfog.MixinSetup"
+    ]
+  }
+}
