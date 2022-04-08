@@ -8,8 +8,10 @@ public class MixinSetup implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        // Get Minecraft Version (Split by ".")
         String[] version = FabricLoaderImpl.INSTANCE.getGameProvider().getNormalizedGameVersion().split("\\.");
-        System.out.println(version[0]+"."+version[1]);
+
+        // Add Mixin file
         Mixins.addConfiguration("z-buffer-fog.mixins." + (version[0] + "." + version[1]) + ".json");
     }
 }

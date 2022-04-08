@@ -5,9 +5,11 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
+// net/minecraft/class_524: net.minecraft.client.render.GameRenderer
 @Mixin(targets = "net/minecraft/class_524", remap = false)
 public class MixinBackgroundRenderer_3_to_8 {
 
+    // method_1329(IF)V: void renderFog(int, float)
     @SuppressWarnings("UnresolvedMixinReference")
     @Redirect(method = { "method_1329(IF)V" }, remap = false,
             at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glFogi(II)V", remap = false))
