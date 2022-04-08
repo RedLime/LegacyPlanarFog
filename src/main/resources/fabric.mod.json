@@ -7,8 +7,8 @@
     "RedLime"
   ],
   "environment": "client",
-  "custom": {
-    "mm:early_risers": [
+  "entrypoints": {
+    "client": [
       "com.redlimerl.zbufferfog.MixinSetup"
     ]
   }
