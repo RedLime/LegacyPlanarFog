@@ -7,9 +7,7 @@
     "RedLime"
   ],
   "environment": "client",
-  "entrypoints": {
-    "client": [
-      "com.redlimerl.zbufferfog.MixinSetup"
-    ]
-  }
+  "mixins": [
+    "z-buffer.fog.mixins.json"
+  ]
 }
