@@ -4,7 +4,8 @@
   "version": "${version}",
   "name": "ZBufferFog",
   "authors": [
-    "RedLime"
+    "RedLime",
+    "VoidXWalker"
   ],
   "environment": "client",
   "mixins": [

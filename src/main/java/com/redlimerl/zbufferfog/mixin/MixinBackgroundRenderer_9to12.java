@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 // net/minecraft/class_524: net.minecraft.client.render.GameRenderer
 @Mixin(targets = "net/minecraft/class_524", remap = false)
-public class MixinBackgroundRenderer_9_to_12 {
+public class MixinBackgroundRenderer_9to12 {
 
     // method_1329(IF)V: void renderFog(int, float)
     // Lnet/minecraft/class_2403;method_12300(II)V: void GlStateManager.method_12300(int, int)

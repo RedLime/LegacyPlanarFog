@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 // net/minecraft/class_524: net.minecraft.client.render.GameRenderer
 @Mixin(targets = "net/minecraft/class_524", remap = false)
-public class MixinBackgroundRenderer_3_to_8 {
+public class MixinBackgroundRenderer_3to8 {
 
     // method_1329(IF)V: void renderFog(int, float)
     @SuppressWarnings("UnresolvedMixinReference")
