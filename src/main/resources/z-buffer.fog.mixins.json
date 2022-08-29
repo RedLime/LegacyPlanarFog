@@ -5,11 +5,12 @@
   "compatibilityLevel": "JAVA_8",
   "plugin": "com.redlimerl.zbufferfog.MixinPlugin",
   "mixins": [
+    "MixinBackgroundRenderer_13",
     "MixinBackgroundRenderer_3to8",
-    "MixinBackgroundRenderer_9to12",
-    "MixinBackgroundRenderer_13"
+    "MixinBackgroundRenderer_9to12"
   ],
   "client": [
+    "MixinBackgroundRenderer_14"
   ],
   "injectors": {
     "defaultRequire": 1
