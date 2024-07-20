@@ -8,22 +8,23 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-// net/minecraft/class_4217: net.minecraft.client.render.BackgroundRenderer, but legacy yarn doesn't mapping it
-@Mixin(targets = "net/minecraft/class_4217", remap = false)
-public class MixinBackgroundRenderer_13 {
-    @Shadow(aliases = "field_20649")
+// same as MixinBackgroundRenderer_12$1to12$2
+// net/minecraft/class_524: net.minecraft.client.render.GameRenderer
+@Mixin(targets = "net/minecraft/class_524", remap = false)
+public class MixinBackgroundRenderer_9to11$2 {
+    @Shadow(aliases = "field_1856")
     private float fogRed;
 
-    @Shadow(aliases = "field_20650")
+    @Shadow(aliases = "field_1857")
     private float fogGreen;
 
-    @Shadow(aliases = "field_20651")
+    @Shadow(aliases = "field_1858")
     private float fogBlue;
 
-    // method_19053(F)V: void renderBackground(float), not mapped
-    // method_9793(FFFF)V: void clearColor(float, float, float, float)
+    // method_1342(F)V: void updateFog(float)
+    // method_9801(FFFF)V: void clearColor(float, float, float, float)
     @Dynamic
-    @Inject(method = "method_19053", remap = false,
+    @Inject(method = "method_1342", remap = false,
             at = @At(value = "INVOKE", target = "Lnet/minecraft/class_2403;method_9801(FFFF)V"))
     private void handleNaNIntensity(CallbackInfo ci) {
         if (Float.isNaN(fogRed)) {
@@ -37,10 +38,10 @@ public class MixinBackgroundRenderer_13 {
         }
     }
 
-    // method_19054(IF)V: void renderFog(int, float) but legacy yarn doesn't mapping it
+    // method_1329(IF)V: void renderFog(int, float)
     // Lnet/minecraft/class_2403;method_12300(II)V: void GlStateManager.method_12300(int, int)
     @Dynamic
-    @Redirect(method = "method_19054", remap = false,
+    @Redirect(method = "method_1329(IF)V", remap = false,
             at = @At(value = "INVOKE", target = "Lnet/minecraft/class_2403;method_12300(II)V"))
     private void setFogType(int i, int j) {
     }
