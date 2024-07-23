@@ -11,29 +11,33 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 // net/minecraft/class_4217: net.minecraft.client.render.BackgroundRenderer, but legacy yarn doesn't mapping it
 @Mixin(targets = "net/minecraft/class_4217", remap = false)
 public class MixinBackgroundRenderer_13 {
-    @Shadow(aliases = "field_20649")
-    private float fogRed;
+    // fogRed
+    @Shadow(remap = false)
+    private float field_20649;
 
-    @Shadow(aliases = "field_20650")
-    private float fogGreen;
+    // fogGreen
+    @Shadow(remap = false)
+    private float field_20650;
 
-    @Shadow(aliases = "field_20651")
-    private float fogBlue;
+    // fogBlue
+    @Shadow(remap = false)
+    private float field_20651;
 
     // method_19053(F)V: void renderBackground(float), not mapped
     // method_9793(FFFF)V: void clearColor(float, float, float, float)
     @Dynamic
     @Inject(method = "method_19053", remap = false,
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/class_2403;method_9801(FFFF)V"))
+            at = { @At(value = "INVOKE", target = "Lnet/minecraft/class_2403;method_9801(FFFF)V"),
+                    @At(value = "INVOKE", target = "Lnet/optifine/shaders/Shaders;setClearColor(FFFF)V") }, require = 1)
     private void handleNaNIntensity(CallbackInfo ci) {
-        if (Float.isNaN(fogRed)) {
-            fogRed = 0;
+        if (Float.isNaN(field_20649)) {
+            field_20649 = 0;
         }
-        if (Float.isNaN(fogGreen)) {
-            fogGreen = 0;
+        if (Float.isNaN(field_20650)) {
+            field_20650 = 0;
         }
-        if (Float.isNaN(fogBlue)) {
-            fogBlue = 0;
+        if (Float.isNaN(field_20651)) {
+            field_20651 = 0;
         }
     }
 

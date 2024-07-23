@@ -13,15 +13,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(targets = "net/minecraft/class_524", remap = false)
 public class MixinBackgroundRenderer_3to8 {
     // fogRed, cannot do an alias because field is non-private in early versions
-    @Shadow
+    @Shadow(remap = false)
     private float field_1856;
 
     // fogGreen
-    @Shadow
+    @Shadow(remap = false)
     private float field_1857;
 
     // fogBlue
-    @Shadow
+    @Shadow(remap = false)
     private float field_1858;
 
     // method_1342(F)V: void updateFog(float)
@@ -29,7 +29,8 @@ public class MixinBackgroundRenderer_3to8 {
     @Dynamic
     @Inject(method = "method_1342", remap = false,
             at = { @At(value = "INVOKE", target = "Lnet/minecraft/class_2403;method_9801(FFFF)V"),
-                    @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glClearColor(FFFF)V") }, require = 1)
+                    @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glClearColor(FFFF)V"),
+                    @At(value = "INVOKE", target = "Lnet/optifine/shaders/Shaders;setClearColor(FFFF)V") }, require = 1)
     private void handleNaNIntensity(CallbackInfo ci) {
         if (Float.isNaN(field_1856)) {
             field_1856 = 0;
